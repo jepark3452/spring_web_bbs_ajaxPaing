@@ -35,4 +35,8 @@ public class SampleDAO extends AbstractDAO{
 	public void deleteBoard(Map<String, Object> map) {
 		delete("sample.deleteBoard", map);
 	}
+
+	public void insertFile(Map<String, Object> map) {
+		insert("sample.insertFile", map);
+	}
 }
