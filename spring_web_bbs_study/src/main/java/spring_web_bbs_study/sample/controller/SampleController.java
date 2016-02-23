@@ -54,7 +54,8 @@ public class SampleController {
 		ModelAndView mv = new ModelAndView("/sample/boardDetail");
 		
 		Map<String, Object> map = sampleService.selectBoardDetail(commandMap.getMap());
-		mv.addObject("map", map);
+		mv.addObject("map", map.get("map"));
+		mv.addObject("list", map.get("list"));
 		
 		return mv;
 	}

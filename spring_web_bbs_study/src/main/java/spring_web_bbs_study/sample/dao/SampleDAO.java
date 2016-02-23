@@ -39,4 +39,9 @@ public class SampleDAO extends AbstractDAO{
 	public void insertFile(Map<String, Object> map) {
 		insert("sample.insertFile", map);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectFileList(Map<String, Object> map) {
+		return (List<Map<String, Object>>)selectList("sample.selectFileList", map);
+	}
 }

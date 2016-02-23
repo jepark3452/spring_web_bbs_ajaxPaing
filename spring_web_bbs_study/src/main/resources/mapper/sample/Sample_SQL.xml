@@ -117,4 +117,18 @@
     	]]>
 	</insert>
 	
+	<select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				IDX,
+				ORIGINAL_FILE_NAME,
+				ROUND(FILE_SIZE/1024, 1) AS FILE_SIZE
+			FROM
+				TB_FILE
+			WHERE 
+				BOARD_IDX = #{IDX}
+				AND DEL_GB = 'N'		
+		]]>
+	</select>
+	
  </mapper>
