@@ -44,6 +44,19 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
      
+     <error-page>
+		<error-code>404</error-code>
+		<location>/resources/error/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/resources/error/error405.jsp</location>
+	</error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/resources/error/error500.jsp</location>
+    </error-page>
+     
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:config/spring/context-*.xml</param-value>

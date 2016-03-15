@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/gdrivecar/!svn/ver/3/GCarSS/WebContent/resources/error
+END
+error500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/gdrivecar/!svn/ver/485/GCarSS/WebContent/resources/error/error500.jsp
+END
+error404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/gdrivecar/!svn/ver/485/GCarSS/WebContent/resources/error/error404.jsp
+END
+error405.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/gdrivecar/!svn/ver/485/GCarSS/WebContent/resources/error/error405.jsp
+END

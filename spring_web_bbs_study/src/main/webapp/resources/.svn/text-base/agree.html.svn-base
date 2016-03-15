@@ -1,0 +1,94 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<link href="css/service/style.css" rel="stylesheet" type="text/css" />
+<title>▒▒▒▒▒ 씨티카 이용약관 ▒▒▒▒▒</title>
+
+<link href="css/service/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.agreement_title2 { position:relative; height:22px; }
+.agreement_text2 { position:relative;}
+</style>
+<link rel="stylesheet" type="text/css" href='css/jquery-ui.css'/>
+<script type="text/javascript" src='js/jquery.js'></script>
+<script type="text/javascript" src='js/jquery-ui.js'></script>
+<script type="text/javascript" src='js/jquery.form.js'></script>
+<script type="text/javascript" src='js/common.js'></script>
+<script type="text/javascript" src='js/jquery.alphanumeric.js'></script>
+<script type="text/javascript" src="js/autoNumeric-1.7.5.js"></script>
+<script type="text/javascript">
+//이용약관 조회
+$(document).ready(function() {
+	fn_agreePop();
+});
+function fn_agreePop(){
+	$.ajax({ 
+		type: 'post' ,
+		url : "/service/member/regist/agreePop" ,
+		dataType : 'json' ,
+		success : function(jsonData, textStatus, jqXHR) {
+			var selectHtml = '';
+			var tempHtml = '';
+			var selectprocon = '';
+			
+			selectHtml += '<select name="proseq" id="proseq" onchange="fn_agreeChange();" style="width:258px; height:25px; vertical-align:middle; margin-top:-9px;">';
+			
+			for(var i = 0 ; i < jsonData.length ; i++){
+				proseq = jsonData[i].proseq;
+				protit = jsonData[i].protit;
+				procon = jsonData[i].procon;
+				
+				if(i == 0){
+					selectHtml += '<option value="' + proseq + '" selected>';
+					selectprocon = jsonData[i].procon;
+				}else{
+					selectHtml += '<option value="' + proseq + '">';	
+				}
+				selectHtml += protit;
+				selectHtml += '</option>';
+				
+				tempHtml += '<div id="tempHtml_'+proseq+'" name="tempHtml_'+proseq+'">';
+				tempHtml += procon;
+				tempHtml += '</div>';
+			}			
+			selectHtml += '</select>';
+			
+			var dialogContent = '';
+			
+			dialogContent += '<div class="space23">'+ selectHtml +'</div>';
+			dialogContent += '<div class="agreement_title2 font14 gray04" style="width:99%">';
+			dialogContent += '<div class="agreement_text2" style="width:97%">';
+			dialogContent += '<div id="proconArea" name="proconArea" style="width:100%; padding:18px; border:1px solid #e1e1e1; background-color:#FFFFFF; overflow:auto; overflow-x:hidden; overflow-y:auto; color:#464646; line-height:170%;">';
+			dialogContent += selectprocon;
+			dialogContent += '</div>';
+			dialogContent += '</div>';
+			dialogContent += '<div class="agreement_text space12"></div>';
+			//dialogContent += '<div class="zip_search_bt01">';
+			//dialogContent += '<a href="javascript:" onclick="fn_agreeDiallogClose();"><img src="images/service/useintro/zip_bt04.gif" /></a>';
+			//dialogContent += '</div>';
+			dialogContent += '<div id="tempHtmlArea" name="tempHtmlArea" style="display:none;">'+tempHtml+'</div>';
+			
+			$('#agreeDialogContent').html(dialogContent);
+			// 자동차 표준 대여약관 Default
+			$('#proseq').val('88');
+			fn_agreeChange();
+		} ,
+		error : function() {
+			location.href = $('#contextPath').val()+'/jsp/error.jsp';
+		}
+	});
+}
+//약관변경시
+function fn_agreeChange(){
+	//alert($('#proseq').val());
+	$('#agreeDialogContent [name=proconArea]').html($('#agreeDialogContent [name=tempHtml_'+$('#agreeDialogContent [name=proseq]').val()+']').html());
+}
+</script>
+</head>
+<body>
+<div id="agreeDialogHolder" style="width:100%"><p id="agreeDialogContent" style="width:98%"></p></div>
+</body>
+</html>

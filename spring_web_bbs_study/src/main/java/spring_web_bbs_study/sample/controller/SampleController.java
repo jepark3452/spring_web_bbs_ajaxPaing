@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring_web_bbs_study.common.FormException;
 import spring_web_bbs_study.common.common.CommandMap;
+import spring_web_bbs_study.common.util.FormToken;
 import spring_web_bbs_study.sample.service.SampleService;
 
 @Controller
@@ -55,7 +57,16 @@ public class SampleController {
 	
 	@RequestMapping(value="/sample/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/sample/openBoardList.do");
+		//ModelAndView mv = new ModelAndView("redirect:/sample/openBoardList.do");
+		
+		// FormToken TEST START
+		ModelAndView mv = new ModelAndView("/sample/boardWriteComp");
+		// FormToken TEST END
+		
+		if(!FormToken.isValid(request)) {
+			log.info("\n ### 생성된 FormToken [ " + FormToken.set(request) + " ] \n");
+			throw new FormException("이미 작업이 실행되었거나 비정상적인 요청입니다.");
+		}
 		
 		sampleService.insertBoard(commandMap.getMap(), request);
 		

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="spring_web_bbs_study.common.util.FormToken" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,6 +7,7 @@
 </head>
 <body>
 	<form id="frm" name="frm" enctype="multipart/form-data">
+	<input type="hidden" name="TOKEN" value="<%= FormToken.set(request) %>">
 		<table class="board_view">
 			<colgroup>
 				<col width="15%">
