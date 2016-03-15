@@ -1,4 +1,4 @@
-package spring_web_bbs_study.common;
+package spring_web_bbs_study.common.exception;
 
 /**
  * Form 토큰 관련 exception class

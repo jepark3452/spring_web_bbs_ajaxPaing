@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring_web_bbs_study.common.FormException;
 import spring_web_bbs_study.common.common.CommandMap;
+import spring_web_bbs_study.common.exception.FormException;
 import spring_web_bbs_study.common.util.FormToken;
 import spring_web_bbs_study.sample.service.SampleService;
 
